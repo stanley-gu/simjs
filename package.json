@@ -1,0 +1,23 @@
+{
+  "name": "sim.js",
+  "version": "0.0.0",
+  "description": "An SBML simulator for the browser",
+  "main": "sim.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stanley-gu/simjs"
+  },
+  "keywords": [
+    "sbml",
+    "ode",
+    "simulation"
+  ],
+  "author": "Stanley Gu",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/stanley-gu/simjs/issues"
+  }
+}

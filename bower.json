@@ -1,0 +1,23 @@
+{
+  "name": "sim.js",
+  "version": "0.0.0",
+  "authors": [
+    "Stanley Gu <stanleygu@gmail.com>"
+  ],
+  "description": "An SBML simulator for the browser",
+  "main": "sim.js",
+  "keywords": [
+    "sbml",
+    "ode",
+    "simulation"
+  ],
+  "license": "BSD-2-Clause",
+  "homepage": "https://github.com/stanley-gu/simjs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
