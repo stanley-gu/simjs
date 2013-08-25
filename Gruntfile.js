@@ -38,6 +38,10 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
                 tasks: ['copy:styles', 'autoprefixer']
             },
+            tests: {
+                files: ['spec/*.js', 'src/*.js'],
+                tasks: ['jasmine']
+            }
         },
         clean: {
             dist: {
@@ -158,11 +162,19 @@ module.exports = function (grunt) {
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
             }
+        },
+        jasmine: {
+            sbml: {
+                src: 'src/*.js',
+                options: {
+                    specs: 'spec/*Spec.js'
+                }
+            }
         }
     });
 
     grunt.registerTask('test', [
-        'jasmine'
+        'watch:tests'
     ]);
 
     grunt.registerTask('build', [
