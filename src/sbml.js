@@ -1,4 +1,5 @@
 // sbml.js: Parsing sbml documents
+'use strict'
 
 function SbmlParser($sbmlDoc) {
     this.$sbmlDoc = $sbmlDoc;

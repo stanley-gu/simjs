@@ -1,7 +1,7 @@
 /*global $:false state:false numeric:false SbmlParser*/
 
 // simulation.js: functions for simulating models using numeric.js
-
+'use strict'
 function Sim() {}
 
 Sim.prototype.simulate = function($sbmlDoc) {

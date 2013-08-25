@@ -1,23 +1,28 @@
 {
   "name": "sim.js",
   "version": "0.0.0",
+  "dependencies": {},
   "description": "An SBML simulator for the browser",
   "main": "sim.js",
   "scripts": {
     "test": "grunt test"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/stanley-gu/simjs"
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-bower-install": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-concurrent": "~0.3.0",
+    "load-grunt-tasks": "~0.1.0",
+    "time-grunt": "~0.1.1",
+    "grunt-contrib-jasmine": "~0.5.1"
   },
-  "keywords": [
-    "sbml",
-    "ode",
-    "simulation"
-  ],
-  "author": "Stanley Gu",
-  "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/stanley-gu/simjs/issues"
+  "engines": {
+    "node": ">=0.8.0"
   }
 }
