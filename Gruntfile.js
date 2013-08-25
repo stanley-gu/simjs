@@ -111,29 +111,29 @@ module.exports = function (grunt) {
         // enable this task if you prefer defining your build targets here
         uglify: {
             dist: {
-              files: {
-                '<%= yeoman.dist %>/sbmlsim.min.js': ['src/*.js']
-              }
-            }        
-         },
+                files: {
+                    '<%= yeoman.dist %>/sbmlsim.min.js': ['src/*.js']
+                }
+            }
+        },
         concat: {
             dist: {
-              src: ['src/*.js'],
-              dest: 'dist/sbmlsim.js',
+                src: ['src/*.js'],
+                dest: 'dist/sbmlsim.js',
             }
         },
         useminPrepare: {
-          html: '<%= yeoman.app %>/index.html',
-          options: {
-            dest: '<%= yeoman.dist %>'
-          }
+            html: '<%= yeoman.app %>/index.html',
+            options: {
+                dest: '<%= yeoman.dist %>'
+            }
         },
         usemin: {
-          html: ['<%= yeoman.dist %>/{,*/}*.html'],
-          css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-          options: {
-            dirs: ['<%= yeoman.dist %>']
-          }
+            html: ['<%= yeoman.dist %>/{,*/}*.html'],
+            css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+            options: {
+                dirs: ['<%= yeoman.dist %>']
+            }
         },
         // Put files not handled in other tasks here
         copy: {

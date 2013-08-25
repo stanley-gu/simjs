@@ -1,5 +1,6 @@
+/*global $:false state:false numeric:false SbmlParser*/
 // sbml.js: Parsing sbml documents
-'use strict'
+'use strict';
 
 function SbmlParser($sbmlDoc) {
     this.$sbmlDoc = $sbmlDoc;
@@ -8,7 +9,6 @@ function SbmlParser($sbmlDoc) {
 
 // updates parameters and propogates changes to other model properties
 SbmlParser.prototype.updateParameter = function(id, value) {
-    
     if ( this.$sbmlDoc.find('parameter#' + id).length === 1) {
         this.$sbmlDoc.find('parameter#' + id)[0].setAttribute('value',value);
     } else if (this.$sbmlDoc.find('compartment#' + id).length === 1) {
@@ -59,31 +59,38 @@ SbmlParser.prototype.getListOfSpecies = function() {
     var listOfSpecies = [];
     for (var i = 0; i < this.$sbmlDoc.find('species').length; i++) {
         listOfSpecies[i] = this.$sbmlDoc.find('species')[i].getAttribute('id');
-    };
+    }
     return listOfSpecies;
-}
+};
 
 // returns stoichiometry matrix
 SbmlParser.prototype.getStoichiometry = function() {
     var listOfSpecies = this.listOfSpecies;
-    for (var colRxn = []; colRxn.length < this.$sbmlDoc.find('reaction').length; colRxn.push(0));
-    for (var stoichiometryMatrix = []; stoichiometryMatrix.length < listOfSpecies.length; stoichiometryMatrix.push(new Array(colRxn)));
-
-    for (var i = 0; i < this.$sbmlDoc.find('reaction').length; i++) {
+    var i;
+    var colRxn = [];
+    for (i = 0; i < this.$sbmlDoc.find('reaction').length; i++) {
+        colRxn.push(0);
+    }
+    var stoichiometryMatrix = [];
+    for (i = 0; i < listOfSpecies.length; i++) {
+        stoichiometryMatrix.push(new Array(colRxn));
+    }
+    for (i = 0; i < this.$sbmlDoc.find('reaction').length; i++) {
         var a = this.$sbmlDoc.find('reaction')[i];
         var listOfProducts = $(a).find('listOfProducts').find('speciesReference');
+        var ind;
         for (var j = 0; j < listOfProducts.length; j++) {
-            var ind = listOfSpecies.indexOf(listOfProducts[j].getAttribute('species'));
+            ind = listOfSpecies.indexOf(listOfProducts[j].getAttribute('species'));
             stoichiometryMatrix[ind][i] = 1;
         }
-        var listOfReactants = $(a).find('listOfReactants').find('speciesReference')
-        for (var j = 0; j < listOfReactants.length; j++) {
-            var ind = listOfSpecies.indexOf(listOfReactants[j].getAttribute('species'));
+        var listOfReactants = $(a).find('listOfReactants').find('speciesReference');
+        for (j = 0; j < listOfReactants.length; j++) {
+            ind = listOfSpecies.indexOf(listOfReactants[j].getAttribute('species'));
             stoichiometryMatrix[ind][i] = -1;
         }
     }
     return stoichiometryMatrix;
-}
+};
 
 // returns list of infix strings for reactions
 SbmlParser.prototype.getListOfReactionInfix = function() {
@@ -99,7 +106,7 @@ SbmlParser.prototype.getListOfReactionInfix = function() {
             token = parameters[key];
         }
         else if (listOfSpecies.indexOf(key) > -1) {
-            token = 'x[' + listOfSpecies.indexOf(key) + ']'
+            token = 'x[' + listOfSpecies.indexOf(key) + ']';
         }
         else {
             token = key;
@@ -126,4 +133,4 @@ SbmlParser.prototype.getListOfReactionInfix = function() {
         listOfReactionInfix[i] = infixString;
     }
     return listOfReactionInfix;
-}
+};
